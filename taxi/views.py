@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
@@ -118,11 +119,9 @@ class DriverLicenseUpdateView(LoginRequiredMixin,
         return context
 
     def handle_no_permission(self):
-        return render(self.request, "taxi/license_form.html", {
-            "error_message": "You are not allowed to "
-                             "update another driver's "
-                             "license number!",
-        })
+        return HttpResponseForbidden(
+            "You are not allowed to update another driver's license number!"
+        )
 
 
 class DriverDeleteView(LoginRequiredMixin, generic.DeleteView):

@@ -23,6 +23,6 @@
     {% empty %}
       <p>No cars!</p>
     {% endfor %}
-  <a href="{% url 'taxi:driver-delete' pk=driver.id %}"><button class="btn btn-primary">Delete</button></a>
+  <a href="{% url 'taxi:driver-delete' driver.id %}"><button class="btn btn-primary">Delete</button></a>
   </div>
 {% endblock %}
