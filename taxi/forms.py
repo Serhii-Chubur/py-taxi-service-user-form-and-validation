@@ -36,9 +36,11 @@ class DriverCreateForm(DriverLicenseUpdateForm, UserCreationForm):
 
 
 class CarCreateForm(forms.ModelForm):
-    drivers = forms.ModelMultipleChoiceField(queryset=get_user_model().objects.all(),
-                                     widget=forms.CheckboxSelectMultiple(),
-                                     required=False)
+    drivers = forms.ModelMultipleChoiceField(
+        queryset=get_user_model().objects.all(),
+        widget=forms.CheckboxSelectMultiple(),
+        required=False
+    )
 
     class Meta:
         model = Car
